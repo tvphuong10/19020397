@@ -28,6 +28,23 @@ public class Dictionary {
         }
     }
 
+    public String printStringFromWord (Word pointer, String str) {
+        StringBuilder ret = new StringBuilder();
+        while (pointer != null) {
+            if (pointer.Word_targer.length() < str.length()) {
+                return ret.toString();
+            }
+            for (int i = 0; i < str.length(); i++) {
+                if (pointer.Word_targer.charAt(i) != str.charAt(i)) {
+                    return ret.toString();
+                }
+            }
+            ret.append(pointer.Word_targer).append("\n");
+            pointer = pointer.next;
+        }
+        return ret.toString();
+    }
+
     public Word findTheMostSimilar (String tar) {
         Word current = head.next;
         Word before = head;
